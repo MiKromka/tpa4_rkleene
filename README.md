@@ -6,7 +6,7 @@ For reference Floyd-Warshall algorithm was implemented.
 
 
 
-Implementation should be made in [RKleene.computeShortestPaths](TODO MKROMKA)  method. 
+Implementation should be made in [RKleene.computeShortestPaths](https://github.com/khar/tpa4_rkleene/blob/master/src/main/scala/services/RKleene.scala)  method. 
 
 Matrix requirements: 
 - it should be square
