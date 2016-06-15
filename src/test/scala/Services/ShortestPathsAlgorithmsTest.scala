@@ -47,8 +47,8 @@ class ShortestPathsAlgorithmsTest extends FlatSpec with Matchers with TableDrive
   )
 
   lazy val dataSets = Seq(
-//    (trivialCaseMatrix, simpleCaseShortestPaths),
-//    (twoVerticesMatrix, twoVerticesShortestPaths),
+    (trivialCaseMatrix, simpleCaseShortestPaths),
+    (twoVerticesMatrix, twoVerticesShortestPaths),
     (fourVerticesMatrix, fourVerticesShortestPaths)
   )
 
