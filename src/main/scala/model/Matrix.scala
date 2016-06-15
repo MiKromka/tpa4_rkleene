@@ -8,7 +8,7 @@ case class Indices(start: Int, end: Int)
   * M = | A  B |
   *     | C  D |
   */
-case class Matrix(m: Array[Array[Double]]) {
+case class Matrix(m: Array[Array[Int]]) {
 
   import Matrix._
 
@@ -48,9 +48,40 @@ case class Matrix(m: Array[Array[Double]]) {
 
   override def hashCode = this.m.hashCode()
 
-  def +(m: Matrix): Matrix = ???
+  /**
+    * + is meant as a Matrix with elements that are min of corresponding elements of two matrices:
+    * | 5 4 | + | 1 5 | = | 1 4 |
+    * | 3 3 |   | 2 2 |   | 2 2 |
+    */
+  def +(other: Matrix): Matrix = {
+    val newM = m.zip(other.m).map {
+      case (thisRows, otherRows) =>
+        thisRows.zip(otherRows).map{case (a1,a2) => Math.min(a1,a2)}
+    }
 
-  def *(m: Matrix): Matrix = ???
+    Matrix(newM)
+  }
+
+  /**
+    * Fancy way of multiplying matrices in Scala with + changed to Math.min and * changed to +
+    */
+  def *(other: Matrix): Matrix = {
+    val summed = for (row <- m)
+      yield for (col <- other.m.transpose)
+        yield {
+          row.zip(col).map {
+            case (a1,a2) if a1 == Int.MaxValue || a2 == Int.MaxValue =>
+              Int.MaxValue
+            case (a1,a2) =>
+              a1 + a2
+          }.reduceLeft[Int]{
+            case (a:Int,b:Int) =>
+              Math.min(a,b)
+          }
+        }
+
+    Matrix(summed)
+  }
 }
 
 object Matrix {
@@ -59,8 +90,17 @@ object Matrix {
   }
 
   def apply(a: Matrix, b: Matrix, c: Matrix, d: Matrix): Matrix = {
+    val ab = a.m.zip(b.m).map {
+      case (la,lb) => la ++ lb
+    }
 
-    ???
+    val cd = c.m.zip(d.m).map {
+      case (lc, ld) => lc ++ ld
+    }
+
+    val abcd = Matrix(ab ++ cd)
+
+    abcd
   }
 }
 

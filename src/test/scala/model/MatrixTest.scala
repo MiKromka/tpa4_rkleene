@@ -38,6 +38,50 @@ class MatrixTest extends FlatSpec with Matchers  {
       Matrix.isPowerOfTwo(n) shouldEqual false
     }
   }
+  it should "create matrix from four submatrices" in {
+    //given
+    val a = Matrix(Array(Array(1,2),Array(5,6)))
+    val b = Matrix(Array(Array(3,4),Array(7,8)))
+    val c = Matrix(Array(Array(9,10),Array(13,14)))
+    val d = Matrix(Array(Array(11,12),Array(15,16)))
+    val expectedMatrix = Matrix(Array(Array(1,2,3,4), Array(5,6,7,8), Array(9,10,11,12), Array(13,14,15,16)))
+
+    //when
+    val resultMatrix = Matrix(a,b,c,d)
+
+    //then
+    resultMatrix shouldEqual expectedMatrix
+  }
+
+  it should "sum matrices using min operator instead of +" in {
+    //given
+    val m1 = Matrix(Array(Array(10, 1), Array(3, 3)))
+    val m2 = Matrix(Array(Array(2, 22), Array(3, 1)))
+
+    val expectedMatrix = Matrix(Array(Array(2, 1), Array(3,1)))
+
+    //when
+    val result = m1 + m2
+
+    //then
+    result shouldEqual expectedMatrix
+  }
+
+  it should "multiply matrices using min instead of + and + operator instead of *" in {
+    //given
+    val m1 = Matrix(Array(Array(10, 1), Array(3, 3)))
+    val m2 = Matrix(Array(Array(2, 22), Array(3, 1)))
+
+    val expectedMatrix = Matrix(Array(Array(4, 2), Array(5, 4)))
+
+    //when
+    val result = m1 * m2
+
+    //then
+    result shouldEqual expectedMatrix
+  }
+
+
 
   it should "throw IllegalArgumentException if non-square matrix is created" in {
     a [IllegalArgumentException] should be thrownBy {

@@ -17,13 +17,14 @@ object RKleene extends ShortestPathServiceLike {
       m
     } else {
       val a = computeShortestPaths(m.getA)
-      val b = m.getB + a * m.getB
-      val c = m.getC + m.getC * a
-      val d = m.getD + c * b
+      val b = m.getB + (a * m.getB) // can skip "m.getB +"
+      val c = m.getC + (m.getC * a) // can skip "m.getC +"
+      val d = m.getD + (c * b)
+
       val d2 = computeShortestPaths(d)
-      val b2 = b + b * d2
-      val c2 = c + d2 * c
-      val a2 = a + b2 * c2
+      val b2 = b + (b * d2) // can skip "b +"
+      val c2 = c + (d2 * c) // can skip "c +"
+      val a2 = a + (b2 * c2)
 
       Matrix(a=a2, b=b2, c=c2, d=d2)
     }
