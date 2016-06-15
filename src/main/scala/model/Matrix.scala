@@ -8,7 +8,7 @@ case class Indices(start: Int, end: Int)
   * M = | A  B |
   *     | C  D |
   */
-case class Matrix(m: Array[Array[Double]]) {
+case class Matrix(m: Array[Array[Int]]) {
 
   import Matrix._
 

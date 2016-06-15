@@ -9,13 +9,17 @@ trait ShortestPathServiceLike {
     * @return shortest paths matrix
     */
   def compute(m: Matrix): Matrix = {
+    println("#############################")
     println(s"Computing shortest paths for matrix:")
     println(m)
+    println("#############################")
 
     val shortestPaths = computeShortestPaths(m)
 
+    println("#############################")
     println(s"Computed shortest paths:")
     println(shortestPaths)
+    println("#############################")
 
     shortestPaths
   }

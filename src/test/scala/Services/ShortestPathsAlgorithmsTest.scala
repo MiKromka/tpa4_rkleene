@@ -30,9 +30,9 @@ class ShortestPathsAlgorithmsTest extends FlatSpec with Matchers with TableDrive
 
   lazy val fourVerticesMatrix = Matrix(Array(
     Array(0, 7, 8, 2),
-    Array(7, 0, 0, 0),
-    Array(8, 0, 0, 1),
-    Array(2, 0, 1, 0)
+    Array(7, 0, Int.MaxValue, Int.MaxValue),
+    Array(8, Int.MaxValue, 0, 1),
+    Array(2, Int.MaxValue, 1, 0)
   ))
   lazy val fourVerticesShortestPaths = Matrix(Array(
     Array(0,  7,  3, 2),
