@@ -47,11 +47,20 @@ case class Matrix(m: Array[Array[Double]]) {
   }
 
   override def hashCode = this.m.hashCode()
+
+  def +(m: Matrix): Matrix = ???
+
+  def *(m: Matrix): Matrix = ???
 }
 
 object Matrix {
   private[model] def isPowerOfTwo(n: Int): Boolean = {
     (n & (n - 1)) == 0
+  }
+
+  def apply(a: Matrix, b: Matrix, c: Matrix, d: Matrix): Matrix = {
+
+    ???
   }
 }
 
