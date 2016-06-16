@@ -12,6 +12,10 @@ Matrix requirements:
 - it should be square
 - the dimension should be a power of two. 
 
+Presentation (in polish) available here: [https://slides.com/karrith/rkleene_tpa](https://slides.com/karrith/rkleene_tpa)
+
+Solution (definitely not optimal and most elegant) is available on branch "mkromka".
+
 Prepared for **Towarzystwo Przyjaciół Algorytmów** #4
 
 
